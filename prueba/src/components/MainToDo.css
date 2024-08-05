@@ -1,0 +1,13 @@
+header h1 {
+color: red;
+border: 2px solid red;
+margin-top: 0;
+
+}
+
+.listHolder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
