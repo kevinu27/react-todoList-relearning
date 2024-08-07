@@ -10,4 +10,11 @@ margin-top: 0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+}
+
+.mainTodo {
+    display: flex;
+    /* width: 100%; */
+    border: 2px solid green;
 }

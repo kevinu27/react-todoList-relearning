@@ -2,15 +2,25 @@ import './MainToDo.css'
 import { useState } from 'react'
 import { useEffect } from 'react';
 import ToDo from './ToDo';
+import ToDoDetail from './ToDoDetail';
 
 
 export default function MainToDo(props) {
     const [toDoList, settoDoList] = useState([])//inicio el estado como una array en vez de dejarlo solo porque si no da problemas con el map()
+    const [detailVisible, setDetailVisible] = useState({ task: null, visible: false });
 
-    function clickHandler(e) {
-        console.log(e)
-        console.log('clickhandler')
+    function clickHandler(e, props) {
+
+        const clickedTask = props.tarea;
+        setDetailVisible(prevState => ({
+            task: clickedTask,
+            visible: prevState.task === clickedTask ? !prevState.visible : true 
+            //aqui con el valor anterior del estado comprueba si era igual al estado de ahora, si lo es lo cambio al contrario, 
+            //si no es igual porque es la primera iteración lo pongo a true
+        }));
+
     }
+
     function clickHandlerDelete(e, props ) {
         console.log(e)
         console.log('---', props.index)
@@ -50,14 +60,21 @@ settoDoList(
   }, []);
 
 return (
-    <section className='listHolder'>
+    <section className='mainTodo'>
+    < div className='listHolder'>
     {toDoList.map((tarea, index) => (
 
-<ToDo key={index} index={index} tarea={tarea} clicker={clickHandler} delete= {clickHandlerDelete}></ToDo> //aqui el chiclk handler lopaso como props con la prop clickerel 
-//index={index} ques estoy pasando aqui y al que se le asigna la posicion del array que esta itetando lo esta generando el map(), que cuando le pasas un segundo argumento a un map
+<ToDo key={index} index={index} tarea={tarea} clicker={clickHandler} delete= {clickHandlerDelete}></ToDo> //aqui el chiclk handler lopaso como props con la prop clicker el 
+//index={index} ques estoy pasando aqui y al que se le asigna la posicion del array que esta iterando lo esta generando el map(), que cuando le pasas un segundo argumento a un map
 //te devuelve la posicion que está iterando
 
 ))}
+</div>
+<div>
+{detailVisible.visible && detailVisible.task ? 
+    <ToDoDetail tarea={detailVisible.task}></ToDoDetail> : null
+}
+</div>
     </section>
 )
 }
