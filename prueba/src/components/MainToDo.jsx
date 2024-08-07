@@ -36,7 +36,22 @@ export default function MainToDo(props) {
 
     }
 
-const descriptcion = "lo que sea"
+
+    function closeClickerHandler(e, props) {
+
+        console.log('ddfsdfdsf---', props.tarea)
+        const clickedTask = props.tarea;
+
+        setDetailVisible(prevState => ({
+            task: clickedTask,
+            visible: prevState.task === clickedTask ? !prevState.visible : true 
+            //aqui con el valor anterior del estado comprueba si era igual al estado de ahora, si lo es lo cambio al contrario, 
+            //si no es igual porque es la primera iteración lo pongo a true
+        }))
+
+    }
+
+
 useEffect(() => {
     // Código que se ejecuta cuando el componente se monta
 console.log('mounted')
@@ -72,7 +87,7 @@ return (
 </div>
 <div>
 {detailVisible.visible && detailVisible.task ? 
-    <ToDoDetail tarea={detailVisible.task}></ToDoDetail> : null
+    <ToDoDetail tarea={detailVisible.task} closeClicker={closeClickerHandler} ></ToDoDetail> : null
 }
 </div>
     </section>
