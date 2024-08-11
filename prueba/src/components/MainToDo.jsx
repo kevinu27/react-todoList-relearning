@@ -47,6 +47,7 @@ export default function MainToDo(props) {
             visible: prevState.task === clickedTask ? !prevState.visible : true 
             //aqui con el valor anterior del estado comprueba si era igual al estado de ahora, si lo es lo cambio al contrario, 
             //si no es igual porque es la primera iteración lo pongo a true
+            //pongo parentesis antes del objeto para que entienda que es un objeto y los corchetes de arrow function de mas de una linea que se le pone a las arrow functions creo
         }))
 
     }

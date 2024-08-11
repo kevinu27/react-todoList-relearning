@@ -1,0 +1,26 @@
+.formBox{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+.formulario{
+  border: 2px solid red;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 1em;
+  margin: 2em;
+}
+
+.formularioInner{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.saveButton{
+  margin-top: 2em;
+}
