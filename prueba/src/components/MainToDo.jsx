@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { useEffect } from 'react';
 import ToDo from './ToDo';
 import ToDoDetail from './ToDoDetail';
+import AddToDo from './AddToDo'
+
 
 
 export default function MainToDo(props) {
@@ -75,7 +77,21 @@ settoDoList(
     // };
   }, []);
 
+  function saveTask(name, description) {
+    const actualToDoList = [...toDoList, {
+        task: name,
+        description: description
+    }]
+    // console.log('actualToDoList', actualToDoList)
+    settoDoList(actualToDoList)
+    // console.log('click saveTask toDoList', toDoList)
+
+}
+
 return (
+    <>
+    
+<AddToDo save={saveTask}></AddToDo>
     <section className='mainTodo'>
     < div className='listHolder'>
     {toDoList.map((tarea, index) => (
@@ -87,10 +103,12 @@ return (
 ))}
 </div>
 <div>
+
 {detailVisible.visible && detailVisible.task ? 
     <ToDoDetail tarea={detailVisible.task} closeClicker={closeClickerHandler} ></ToDoDetail> : null
 }
 </div>
     </section>
+    </>
 )
 }

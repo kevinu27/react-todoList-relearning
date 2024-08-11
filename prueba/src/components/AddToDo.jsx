@@ -14,6 +14,8 @@ export default function AddToDo(props) {
     }
     function clickSaveHandler(e) {
         console.log('click Save')
+        props.save(name, description)
+        setFormVisbility(false)
         
     }
 

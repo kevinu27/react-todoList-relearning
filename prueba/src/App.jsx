@@ -4,7 +4,6 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/Header'
 import MainToDo from './components/MainToDo'
-import AddToDo from './components/AddToDo'
 
 
 
@@ -26,7 +25,6 @@ function App() {
         <Header title="HEADER22" propFunt={()=>funt(ramdonArgument)} />
       </div>
       <div>
-        <AddToDo></AddToDo>
       </div>
           <MainToDo></MainToDo>
               {/* <a href="https://vitejs.dev" target="_blank">
